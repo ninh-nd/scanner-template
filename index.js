@@ -1,5 +1,5 @@
 const fastify = require("fastify")({ logger: true });
-import { post } from "axios";
+import axios from 'axios';
 import "dotenv/config";
 import { spawnSync } from "child_process";
 
