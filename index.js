@@ -1,7 +1,8 @@
-const fastify = require("fastify")({ logger: true });
+import Fastify from 'fastify';
 import axios from 'axios';
 import "dotenv/config";
 import { spawnSync } from "child_process";
+const fastify = Fastify({ logger: true });
 
 function replaceUnicodeEscapeSequences(text) {
   let decodedText = text.replace(/\\u[0-9a-z]{4}/, (match, p1) =>
