@@ -3,7 +3,7 @@ import axios from 'axios';
 import "dotenv/config";
 import { spawnSync } from "child_process";
 const fastify = Fastify({ logger: true });
-
+const port = process.env.PORT || 3000
 function replaceUnicodeEscapeSequences(text) {
   let decodedText = text.replace(/\\u[0-9a-z]{4}/, (match, p1) =>
     String.fromCharCode(parseInt(p1, 16))
@@ -32,7 +32,7 @@ fastify.get("/image", async (request, reply) => {
 
 const start = async () => {
   try {
-    await fastify.listen({ port: 3000, host: "0.0.0.0" });
+    await fastify.listen({ port, host: "0.0.0.0" });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
